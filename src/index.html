@@ -14,7 +14,16 @@
             <button>Register</button>
         </div>
         <div id="courses">
-
+            <div class="course"></div>
+            <div class="course"></div>
+            <div class="course"></div>
+            <div class="course"></div>
+            <div class="course"></div>
+            <div class="course"></div>
+            <div class="course"></div>
+            <div class="course"></div>
+            <div class="course"></div>
+            <div class="course"></div>
         </div>
     </div>
     <script type="module" src="./js/main.js"></script>
@@ -22,11 +31,48 @@
 </html>
 
 <style>
+    @media (max-width: 1920px) {
+        .course {
+            width: calc(20% - 20px);
+        }
+    }
+    @media (max-width: 1024px) {
+        .course {
+            width: calc(33% - 20px);
+        }
+    }
+    @media (max-width: 768px) {
+        .course {
+            width: calc(50% - 20px);
+        }
+    }
+    @media (max-width: 550px) {
+        .course {
+            width: calc(100% - 20px);
+        }
+    }
+    .course {
+        height: 254px;
+        /*width: calc(20% - 20px);*/
+        border-color: black;
+        border: 2px;
+        border-radius: 5px;
+        border-style: solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     #courses {
+        max-width: 1920px;
+        overflow-y: auto;
         position: absolute;
-        top: 60px;
+        top: 61px;
         width: 100%;
         height: calc(100vh - 60px);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
     }
     body {
         margin: 0;
@@ -66,7 +112,6 @@
         position: absolute;
         left: 50%;
         transform: translateX(-60%);
-        
         color: white;
         white-space: nowrap;
     }
