@@ -14,16 +14,9 @@
             <button>Register</button>
         </div>
         <div id="courses">
-            <div class="course"></div>
-            <div class="course"></div>
-            <div class="course"></div>
-            <div class="course"></div>
-            <div class="course"></div>
-            <div class="course"></div>
-            <div class="course"></div>
-            <div class="course"></div>
-            <div class="course"></div>
-            <div class="course"></div>
+            <div class="course">
+                <div class="course-line"></div>
+            </div>
         </div>
     </div>
     <script type="module" src="./js/main.js"></script>
@@ -31,6 +24,13 @@
 </html>
 
 <style>
+    .course-line {
+        position: relative;
+        width: 100%;
+        height: 1px;
+        border: solid;
+        border-radius: 0 px;
+    }
     @media (max-width: 1920px) {
         .course {
             width: calc(20% - 20px);
