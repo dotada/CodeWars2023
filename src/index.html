@@ -10,15 +10,19 @@
         <p id="welcomep">Welcome to ITDeja!</p>
         <button id="aboutbtn">about</button>
         <div class="button-container">
-            <button>Login</button>
-            <button>Register</button>
+            <button>Satements</button>
         </div>
         <div id="courses">
             <div class="course">
                 <div class="course-image">
-
+                    <img src="/csharp.png" alt="C# logo">
                 </div>
-                <div class="course-line"></div>
+                <button class="learnmorebtn">Learn more</button>
+                <div class="course-description">
+                    <h1>LEARN C#</h1>
+                    <h2>$50.00</h2>
+                    <p>Learn to code in C# as a professional and qualify for high paying jobs as a certified C# developer.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -27,25 +31,6 @@
 </html>
 
 <style>
-    .course-image {
-        display: flex;
-        position: relative;
-        top: -25%;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        border: solid;
-        border-radius: 1px;
-    }
-    .course-line {
-        left: 0;
-        top: 10px;
-        position: relative;
-        width: 100%;
-        height: 1px;
-        border: solid;
-        border-radius: 0 px;
-    }
     @media (max-width: 1920px) {
         .course {
             width: calc(20% - 20px);
@@ -66,16 +51,92 @@
             width: calc(100% - 20px);
         }
     }
+    .course-description h1 {
+        text-align: center;
+        font-family: Metropolisthin;
+    }
+    .course-description h2 {
+        text-align: center;
+        font-family: Metropolisthin;
+    }
+    .course-description p {
+        font-size: 20px;
+    }
     .course {
-        height: 254px;
-        /*width: calc(20% - 20px);*/
-        border-color: black;
-        border: 2px;
+        height: 400px;
+        width: 400px;
+        border: 2px black solid;
         border-radius: 5px;
         border-style: solid;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
+        overflow: hidden;
+    }
+    .learnmorebtn {
+        opacity: 0;
+        pointer-events: none;
+        position: relative;
+        height: 0px;
+        width: 0px;
+        color: rgba(0, 255, 0, 0);
+        transition: opacity 0.5s ease, height 0.5s ease, width 0.5s ease, color 1s ease;
+    }
+    .course:hover {
+        .course-image {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .course-description {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .learnmorebtn {
+            font-family: Metropolisthin;
+            opacity: 100;
+            pointer-events: all;
+            height: 60px;
+            width: 150px;
+            color: rgba(0, 200, 0, 1);
+        }
+    }
+    .course-image {
+        display: flex;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        transition: opacity 0.3s ease; 
+    }
+    
+    .course-image img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
+    }
+    .course-image {
+        display: flex;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        overflow: hidden;
+    }
+    .course-description {
+        left: 0;
+        top: 0;
+        position: relative;
+        width: 100%;
+        height: 50%;
+        transition: opacity 0.5s ease; 
+    }
+    @font-face {
+        font-family: "Metropolisthin";
+        src: url("/Metropolis-Thin.otf");
     }
     #courses {
         max-width: 1920px;
