@@ -6,6 +6,9 @@
     <title>ITDeja</title>
   </head>
   <body>
+    <div id="learnmorecsharp">
+        
+    </div>
     <div id="blackBar">
         <p id="welcomep">Welcome to ITDeja!</p>
         <button id="aboutbtn">about</button>
@@ -13,11 +16,11 @@
             <button>Satements</button>
         </div>
         <div id="courses">
-            <div class="course">
+            <div class="course" id="csharp">
                 <div class="course-image">
                     <img src="/csharp.png" alt="C# logo">
                 </div>
-                <button class="learnmorebtn">Learn more</button>
+                <button class="learnmorebtn" onclick="learnMore('C#')">Learn more</button>
                 <div class="course-description">
                     <h1>LEARN C#</h1>
                     <h2>$50.00</h2>
@@ -27,10 +30,50 @@
         </div>
     </div>
     <script type="module" src="./js/main.js"></script>
+    <script>
+        const sleep = ms => new Promise(r => setTimeout(r, ms));
+        async function learnMore(course) {
+            switch (course) {
+                case "C#":
+                    el = document.getElementById('learnmorecsharp');
+                    console.log(el.style.opacity.toString());
+                    el.style.opacity = 1;
+                    console.log(el.style.opacity.toString());
+                    el.style.pointerEvents = "all";
+                    document.body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+                    await sleep(100);
+                    console.log(el.style.opacity.toString());
+                    window.addEventListener('click', function(e){
+                        if (e.target != el && el.style.opacity == 1){
+                            console.log(el.style.opacity.toString());
+                            el.style.opacity = 0;
+                            console.log(el.style.opacity.toString());
+                            el.style.pointerEvents = "none";
+                            document.body.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                        }
+                    })
+                    window.removeEventListener('click');
+            }
+        }
+    </script>
   </body>
 </html>
 
 <style>
+    #learnmorecsharp {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+        opacity: 0;
+        border-radius: 10px;
+        border: 1px solid black;
+        background-color: white;
+        transition: opacity 0.5s ease;
+        z-index: 2;
+        pointer-events: none;
+    }
     @media (max-width: 1920px) {
         .course {
             width: calc(20% - 20px);
@@ -73,6 +116,7 @@
         flex-direction: column;
         align-items: center;
         overflow: hidden;
+        transition: background-color 0.5s ease;
     }
     .learnmorebtn {
         opacity: 0;
@@ -80,6 +124,9 @@
         position: relative;
         height: 0px;
         width: 0px;
+        border: black 1px solid;
+        border-radius: 10px;
+        background-color: rgb(160,116,220);
         color: rgba(0, 255, 0, 0);
         transition: opacity 0.5s ease, height 0.5s ease, width 0.5s ease, color 1s ease;
     }
@@ -98,8 +145,9 @@
             pointer-events: all;
             height: 60px;
             width: 150px;
-            color: rgba(0, 200, 0, 1);
+            color: rgb(56, 47, 61);
         }
+        background-color: rgb(160,116,220);;
     }
     .course-image {
         display: flex;
@@ -149,9 +197,11 @@
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: flex-start;
+        transition: color 0.5s ease;
     }
     body {
         margin: 0;
+        transition: background-color 1s ease;
     }
     .button-container {
         text-align: center;
