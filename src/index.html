@@ -15,7 +15,7 @@
         <div class="button-container">
             <button>Satements</button>
         </div>
-        <div id="courses">
+        <div id="courses" id="csharp">
             <div class="course" id="csharp">
                 <div class="course-image">
                     <img src="/csharp.png" alt="C# logo">
@@ -36,23 +36,19 @@
             switch (course) {
                 case "C#":
                     el = document.getElementById('learnmorecsharp');
-                    console.log(el.style.opacity.toString());
-                    el.style.opacity = 1;
-                    console.log(el.style.opacity.toString());
-                    el.style.pointerEvents = "all";
+                    el.style.opacity = null;
+                    el.style.opacity = 0;
                     document.body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
                     await sleep(100);
-                    console.log(el.style.opacity.toString());
-                    window.addEventListener('click', function(e){
+                    window.addEventListener('click', async function(e){
                         if (e.target != el && el.style.opacity == 1){
-                            console.log(el.style.opacity.toString());
                             el.style.opacity = 0;
-                            console.log(el.style.opacity.toString());
                             el.style.pointerEvents = "none";
                             document.body.style.backgroundColor = "rgba(0, 0, 0, 0)";
                         }
                     })
-                    window.removeEventListener('click');
+                    el.style.opacity = 1;
+                    el.style.pointerEvents = "all";
             }
         }
     </script>
@@ -128,7 +124,7 @@
         border-radius: 10px;
         background-color: rgb(160,116,220);
         color: rgba(0, 255, 0, 0);
-        transition: opacity 0.5s ease, height 0.5s ease, width 0.5s ease, color 1s ease;
+        transition: opacity 0.5s ease, height 0.5s ease, width 0.5s ease, color 1s ease, font-size 0.5s ease, border-radius 0.5s ease;
     }
     .course:hover {
         .course-image {
@@ -140,12 +136,14 @@
             pointer-events: none;
         }
         .learnmorebtn {
-            font-family: Metropolisthin;
+            font-family: Metropolisbold;
             opacity: 100;
             pointer-events: all;
             height: 60px;
+            font-size: 20px;
             width: 150px;
             color: rgb(56, 47, 61);
+            border: black 2px solid;
         }
         background-color: rgb(160,116,220);;
     }
@@ -185,6 +183,10 @@
     @font-face {
         font-family: "Metropolisthin";
         src: url("/Metropolis-Thin.otf");
+    }
+    @font-face {
+        font-family: "Metropolisbold";
+        src: url("/Metropolis-Bold.otf");
     }
     #courses {
         max-width: 1920px;
