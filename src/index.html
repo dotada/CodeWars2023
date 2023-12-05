@@ -38,6 +38,8 @@
                     el = document.getElementById('learnmorecsharp');
                     el.style.opacity = null;
                     el.style.opacity = 0;
+                    document.getElementById('csharp').style.opacity = 0.5;
+                    document.getElementById('csharp').pointerEvents = "none";
                     document.body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
                     await sleep(100);
                     window.addEventListener('click', async function(e){
@@ -45,6 +47,8 @@
                             el.style.opacity = 0;
                             el.style.pointerEvents = "none";
                             document.body.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                            document.getElementById('csharp').style.opacity = 1;
+                            document.getElementById('csharp').pointerEvents = "all";
                         }
                     })
                     el.style.opacity = 1;
@@ -112,7 +116,7 @@
         flex-direction: column;
         align-items: center;
         overflow: hidden;
-        transition: background-color 0.5s ease;
+        transition: background-color 0.5s ease, opacity 0.5s ease;
     }
     .learnmorebtn {
         opacity: 0;
