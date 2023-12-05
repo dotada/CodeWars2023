@@ -16,7 +16,7 @@
             <button>Satements</button>
         </div>
         <div id="courses" id="csharp">
-            <div class="course" id="csharp">
+            <div class="course coursehover" id="csharp">
                 <div class="course-image">
                     <img src="/csharp.png" alt="C# logo">
                 </div>
@@ -40,6 +40,7 @@
                     el.style.opacity = 0;
                     document.getElementById('csharp').style.opacity = 0.5;
                     document.getElementById('csharp').pointerEvents = "none";
+                    document.getElementById('csharp').classList.remove("coursehover");
                     document.body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
                     await sleep(100);
                     window.addEventListener('click', async function(e){
@@ -49,6 +50,7 @@
                             document.body.style.backgroundColor = "rgba(0, 0, 0, 0)";
                             document.getElementById('csharp').style.opacity = 1;
                             document.getElementById('csharp').pointerEvents = "all";
+                            document.getElementById('csharp').classList.add("coursehover");
                         }
                     })
                     el.style.opacity = 1;
@@ -130,7 +132,7 @@
         color: rgba(0, 255, 0, 0);
         transition: opacity 0.5s ease, height 0.5s ease, width 0.5s ease, color 1s ease, font-size 0.5s ease, border-radius 0.5s ease;
     }
-    .course:hover {
+    .coursehover:hover {
         .course-image {
             opacity: 0;
             pointer-events: none;
@@ -149,7 +151,7 @@
             color: rgb(56, 47, 61);
             border: black 2px solid;
         }
-        background-color: rgb(160,116,220);;
+        background-color: rgb(160,116,220);
     }
     .course-image {
         display: flex;
