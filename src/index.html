@@ -7,7 +7,16 @@
   </head>
   <body>
     <div id="learnmorecsharp">
-        
+        <p class="learnmorep">Description: Learn to develop in C# on a professional level with our beginner to professional C# course. Our well-trained tutors aim to provide the best learning experience for you.</p>
+        <p class="learnmorep">Tutor: Svetozara Stoqnova</p>
+        <p class="learnmorep">Estimated time to complete course: 120 hours</p>
+        <button class="buybtn">Buy course</button>
+    </div>
+    <div id="learnmorepy">
+        <p class="learnmorep">Description: Learn to develop in Python on a professional level with our beginner to professional Python course. Our well-trained tutors aim to provide the best learning experience for you.</p>
+        <p class="learnmorep">Tutor: Svetozara Stoqnova</p>
+        <p class="learnmorep">Estimated time to complete course: 120 hours</p>
+        <button class="buybtn">Buy course</button>
     </div>
     <div id="blackBar">
         <p id="welcomep">Welcome to ITDeja!</p>
@@ -15,16 +24,27 @@
         <div class="button-container">
             <button>Satements</button>
         </div>
-        <div id="courses" id="csharp">
-            <div class="course coursehover" id="csharp">
+        <div id="courses" id="courses">
+            <div class="course coursehovercs" id="csharp">
                 <div class="course-image">
                     <img src="/csharp.png" alt="C# logo">
                 </div>
-                <button class="learnmorebtn" onclick="learnMore('C#')">Learn more</button>
+                <button class="learnmorebtn" onclick="learnMore('C#')" id="learnmorecsbtn">Learn more</button>
                 <div class="course-description">
                     <h1>LEARN C#</h1>
                     <h2>$50.00</h2>
                     <p>Learn to code in C# as a professional and qualify for high paying jobs as a certified C# developer.</p>
+                </div>
+            </div>
+            <div class="course coursehoverpy" id="python">
+                <div class="course-image">
+                    <img src="/python.png" alt="Python logo">
+                </div>
+                <button class="learnmorebtn" id="learnmorepybtn" onclick="learnMore('py')">Learn more</button>
+                <div class="course-description">
+                    <h1>LEARN python</h1>
+                    <h2>$50.00</h2>
+                    <p>Learn to code in python as a professional and qualify for high paying jobs as a certified python developer.</p>
                 </div>
             </div>
         </div>
@@ -41,16 +61,48 @@
                     document.getElementById('csharp').style.opacity = 0.5;
                     document.getElementById('csharp').pointerEvents = "none";
                     document.getElementById('csharp').classList.remove("coursehover");
+                    document.getElementById('courses').style.opacity = 0.5;
+                    document.getElementById('courses').pointerEvents = "none";
+                    el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 1)";
                     document.body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
                     await sleep(100);
                     window.addEventListener('click', async function(e){
-                        if (e.target != el && el.style.opacity == 1){
+                        if (el != event.target && el.style.opacity == 1 && !el.contains(e.target)){
                             el.style.opacity = 0;
                             el.style.pointerEvents = "none";
                             document.body.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                            el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0)";
                             document.getElementById('csharp').style.opacity = 1;
                             document.getElementById('csharp').pointerEvents = "all";
                             document.getElementById('csharp').classList.add("coursehover");
+                            document.getElementById('courses').style.opacity = 1;
+                            document.getElementById('courses').pointerEvents = "all";
+                        }
+                    })
+                    el.style.opacity = 1;
+                    el.style.pointerEvents = "all";
+                case "py":
+                    el = document.getElementById('learnmorepy');
+                    el.style.opacity = null;
+                    el.style.opacity = 0;
+                    document.getElementById('python').pointerEvents = "none";
+                    document.getElementById('python').classList.remove("coursehover");
+                    document.getElementById('courses').style.opacity = 0.5;
+                    document.getElementById('courses').pointerEvents = "none";
+                    el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 1)";
+                    document.body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+                    await sleep(100);
+                    window.addEventListener('click', async function(e){
+                        if (el != event.target && el.style.opacity == 1 && !el.contains(e.target)){
+                            el.style.opacity = 0;
+                            el.style.pointerEvents = "none";
+                            document.body.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                            el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0)";
+                            document.getElementById('python').style.opacity = 1;
+                            document.getElementById('python').pointerEvents = "all";
+                            document.getElementById('python').classList.add("coursehover");
+                            document.getElementById('courses').style.opacity = 1;
+                            document.getElementById('courses').pointerEvents = "all";
                         }
                     })
                     el.style.opacity = 1;
@@ -62,6 +114,42 @@
 </html>
 
 <style>
+    #learnmorepybtn {
+        background-color: rgb(252,220,80);
+    }
+    #python .course-image {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        left: 25%;
+    }
+    #csharp .course-image {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        left: 30%;
+    }
+    #learnmorepy {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+        opacity: 0;
+        border-radius: 10px;
+        border: 1px solid black;
+        transition: opacity 0.5s ease, box-shadow 0.5s ease;
+        z-index: 2;
+        pointer-events: none;
+        font-family: Metropolisthin;
+        background: linear-gradient(to bottom, rgb(252,220,80), rgb(180, 158, 57));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     #learnmorecsharp {
         position: absolute;
         width: 80%;
@@ -71,19 +159,68 @@
         opacity: 0;
         border-radius: 10px;
         border: 1px solid black;
-        background-color: white;
-        transition: opacity 0.5s ease;
+        transition: opacity 0.5s ease, box-shadow 0.5s ease;
         z-index: 2;
         pointer-events: none;
+        font-family: Metropolisthin;
+        background: linear-gradient(to bottom, rgb(160,116,220), rgb(103, 58, 165));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #learnmorecsharp p,
+    #learnmorecsharp button {
+        text-align: center;
+        margin: 10px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    #learnmorecsharp button {
+        background-color: rgb(112,68,172);
+    }
+    .buybtn {
+        border: black 2px solid;
+        border-radius: 10px;
+        background-color: rgb(160,116,220);
     }
     @media (max-width: 1920px) {
         .course {
             width: calc(20% - 20px);
         }
+        .learnmorep {
+            font-size: 60px;
+        }
+        .buybtn {
+            font-size: 60px;
+        }
+    }
+    @media (max-width: 1700px) {
+        .learnmorep {
+            font-size: 50px;
+        }
+        .buybtn {
+            font-size: 50px;
+        }
+    }
+    @media (max-width: 1350px) {
+        .learnmorep {
+            font-size: 45px;
+        }
+        .buybtn {
+            font-size: 45px;
+        }
     }
     @media (max-width: 1024px) {
         .course {
-            width: calc(33% - 20px);
+            width: calc(33% - 20px);   
+        }
+    }
+    @media (max-width:1000px) {
+        .learnmorep {
+            font-size: 40px;
+        }
+        .buybtn {
+            font-size: 40px;
         }
     }
     @media (max-width: 768px) {
@@ -91,9 +228,33 @@
             width: calc(50% - 20px);
         }
     }
+    @media (max-width: 709px) {
+        .learnmorep {
+            font-size: 35px;
+        }
+        .buybtn {
+            font-size: 35px;
+        }
+    }
+    @media (max-width: 583px) {
+        .learnmorep {
+            font-size: 30px;
+        }
+        .buybtn {
+            font-size: 30px;
+        }
+    }
     @media (max-width: 550px) {
         .course {
             width: calc(100% - 20px);
+        }
+    }
+    @media (max-width:477px) {
+        .learnmorep {
+            font-size: 25px;
+        }
+        .buybtn {
+            font-size: 25px;
         }
     }
     .course-description h1 {
@@ -128,11 +289,13 @@
         width: 0px;
         border: black 1px solid;
         border-radius: 10px;
-        background-color: rgb(160,116,220);
         color: rgba(0, 255, 0, 0);
         transition: opacity 0.5s ease, height 0.5s ease, width 0.5s ease, color 1s ease, font-size 0.5s ease, border-radius 0.5s ease;
     }
-    .coursehover:hover {
+    #learnmorecsbtn {
+        background-color: rgb(160,116,220);
+    }
+    .coursehovercs:hover {
         .course-image {
             opacity: 0;
             pointer-events: none;
@@ -153,6 +316,27 @@
         }
         background-color: rgb(160,116,220);
     }
+    .coursehoverpy:hover {
+        .course-image {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .course-description {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .learnmorebtn {
+            font-family: Metropolisbold;
+            opacity: 100;
+            pointer-events: all;
+            height: 60px;
+            font-size: 20px;
+            width: 150px;
+            color: rgb(194, 167, 48);
+            border: black 2px solid;
+        }
+        background-color: rgb(252,220,80);
+    }
     .course-image {
         display: flex;
         position: relative;
@@ -162,13 +346,14 @@
         height: 50%;
         transition: opacity 0.3s ease; 
     }
-    
+    /*
     .course-image img {
         position: relative;
         width: 100%;
         height: 100%;
         object-fit:cover;
     }
+    */
     .course-image {
         display: flex;
         position: relative;
