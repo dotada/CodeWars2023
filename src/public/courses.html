@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ITDeja</title>
+  </head>
+  <body>
+    <div id="learnmorecsharp">
+        <p class="learnmorep">Learn to develop in C# on a professional level with our beginner to professional C# course. Our well-trained tutors aim to provide the best learning experience for you.</p>
+        <p class="learnmorep">Tutor: Svetozara Stoqnova</p>
+        <p class="learnmorep">Estimated time to complete course: 120 hours</p>
+        <button class="buybtn" id="buybtncs">Buy course</button>
+    </div>
+    <div id="learnmorepy">
+        <p class="learnmorep">Learn to develop in Python on a professional level with our beginner to professional Python course. Our well-trained tutors aim to provide the best learning experience for you.</p>
+        <p class="learnmorep">Tutor: Svetozara Stoqnova</p>
+        <p class="learnmorep">Estimated time to complete course: 60 hours</p>
+        <button class="buybtn" id="buybtnpy">Buy course</button>
+    </div>
+    <div id="learnmorecpp">
+        <p class="learnmorep">Learn to develop in C++ on a professional level with our beginner to professional C++ course. Our well-trained tutors aim to provide the best learning experience for you.</p>
+        <p class="learnmorep">Tutor: Svetozara Stoqnova</p>
+        <p class="learnmorep">Estimated time to complete course: 500 hours</p>
+        <button class="buybtn" id="buybtncpp">Buy course</button>
+    </div>
+    <div id="blackBar">
+        <p id="welcomep">Welcome to ITDeja!</p>
+        <button id="aboutbtn" onclick="redirect('index.html')">about</button>
+        <button id="statementsbtn">Satements</button>
+        <div id="courses" id="courses">
+            <div class="course coursehovercs" id="csharp">
+                <div class="course-image">
+                    <img src="/csharp.png" alt="C# logo">
+                </div>
+                <button class="learnmorebtn" onclick="learnMore('C#')" id="learnmorecsbtn">Learn more</button>
+                <div class="course-description">
+                    <h1>LEARN C#</h1>
+                    <h2>$50.00</h2>
+                    <p>Learn to code in C# as a professional and qualify for high paying jobs as a certified C# developer.</p>
+                </div>
+            </div>
+            <div class="course coursehoverpy" id="python">
+                <div class="course-image">
+                    <img src="/python.png" alt="Python logo">
+                </div>
+                <button class="learnmorebtn" onclick="learnMore('py')" id="learnmorepybtn">Learn more</button>
+                <div class="course-description">
+                    <h1>LEARN python</h1>
+                    <h2>$45.00</h2>
+                    <p>Learn to code in python as a professional and qualify for high paying jobs as a certified python developer.</p>
+                </div>
+            </div>
+            <div class="course coursehovercpp" id="cpp">
+                <div class="course-image">
+                    <img src="/cpp.png" alt="C++ logo">
+                </div>
+                <button class="learnmorebtn" onclick="learnMore('cpp')" id="learnmorecppbtn">Learn more</button>
+                <div class="course-description">
+                    <h1>LEARN C++</h1>
+                    <h2>$150.00</h2>
+                    <p>Learn to code in C++ as a professional and qualify for high paying jobs as a certified C++ developer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./js/main.js"></script>
+    <script>
+        const sleep = ms => new Promise(r => setTimeout(r, ms));
+        function redirect(url) {
+            window.location.href = url;
+        }
+        async function learnMore(course) {
+            if (course == "C#") {
+                el = document.getElementById('learnmorecsharp');
+                el.style.opacity = null;
+                el.style.opacity = 0;
+                document.getElementById('csharp').style.opacity = 0.5;
+                document.getElementById('csharp').pointerEvents = "none";
+                document.getElementById('csharp').classList.remove("coursehovercs");
+                document.getElementById('python').classList.remove("coursehoverpy");
+                document.getElementById('cpp').classList.remove("coursehovercpp");
+                document.getElementById('courses').style.opacity = 0.5;
+                document.getElementById('courses').pointerEvents = "none";
+                document.getElementById('buybtncs').style.backgroundColor = "rgb(112,68,172)";
+                el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 1)";
+                document.body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+                await sleep(100);
+                window.addEventListener('click', async function(e){
+                    if (el != event.target && el.style.opacity == 1 && !el.contains(e.target)){
+                        el.style.opacity = 0;
+                        el.style.pointerEvents = "none";
+                        document.body.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                        el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0)";
+                        document.getElementById('csharp').style.opacity = 1;
+                        document.getElementById('csharp').pointerEvents = "all";
+                        document.getElementById('csharp').classList.add("coursehovercs");
+                        document.getElementById('python').classList.add("coursehoverpy");
+                        document.getElementById('cpp').classList.add("coursehovercpp");
+                        document.getElementById('courses').style.opacity = 1;
+                        document.getElementById('courses').pointerEvents = "all";
+                    }
+                })
+                el.style.pointerEvents = "all";
+                el.style.opacity = 1;
+            }
+            if (course == "py") {
+                el = document.getElementById('learnmorepy');
+                el.style.opacity = null;
+                el.style.opacity = 0;
+                document.getElementById('python').pointerEvents = "none";
+                document.getElementById('python').classList.remove("coursehoverpy");
+                document.getElementById('csharp').classList.remove("coursehovercs");
+                document.getElementById('cpp').classList.remove("coursehovercpp");
+                document.getElementById('courses').style.opacity = 0.5;
+                document.getElementById('courses').pointerEvents = "none";
+                document.getElementById('buybtnpy').style.backgroundColor = "rgb(192,164,68)";
+                el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 1)";
+                document.body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+                await sleep(100);
+                window.addEventListener('click', async function(e){
+                    if (el != event.target && el.style.opacity == 1 && !el.contains(e.target)){
+                        el.style.opacity = 0;
+                        el.style.pointerEvents = "none";
+                        document.body.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                        el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0)";
+                        document.getElementById('python').style.opacity = 1;
+                        document.getElementById('python').pointerEvents = "all";
+                        document.getElementById('python').classList.add("coursehoverpy");
+                        document.getElementById('csharp').classList.add("coursehovercs");
+                        document.getElementById('cpp').classList.add("coursehovercpp");
+                        document.getElementById('courses').style.opacity = 1;
+                        document.getElementById('courses').pointerEvents = "all";
+                    }
+                })
+                el.style.pointerEvents = "all";
+                el.style.opacity = 1;
+            }
+            if (course == "cpp") {
+                el = document.getElementById('learnmorecpp');
+                el.style.opacity = null;
+                el.style.opacity = 0;
+                document.getElementById('python').pointerEvents = "none";
+                document.getElementById('python').classList.remove("coursehoverpy");
+                document.getElementById('csharp').classList.remove("coursehovercs");
+                document.getElementById('cpp').classList.remove("coursehovercpp");
+                document.getElementById('courses').style.opacity = 0.5;
+                document.getElementById('courses').pointerEvents = "none";
+                document.getElementById('buybtncpp').style.backgroundColor = "rgb(24,76,140)";
+                el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 1)";
+                document.body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+                await sleep(100);
+                window.addEventListener('click', async function(e){
+                    if (el != event.target && el.style.opacity == 1 && !el.contains(e.target)){
+                        el.style.opacity = 0;
+                        el.style.pointerEvents = "none";
+                        document.body.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                        el.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0)";
+                        document.getElementById('python').style.opacity = 1;
+                        document.getElementById('python').pointerEvents = "all";
+                        document.getElementById('python').classList.add("coursehoverpy");
+                        document.getElementById('csharp').classList.add("coursehovercs");
+                        document.getElementById('cpp').classList.add("coursehovercpp");
+                        document.getElementById('courses').style.opacity = 1;
+                        document.getElementById('courses').pointerEvents = "all";
+                    }
+                })
+                el.style.pointerEvents = "all";
+                el.style.opacity = 1;
+            }
+        }
+    </script>
+  </body>
+</html>
+
+<style>
+    #learnmorecppbtn {
+        background-color: rgb(104,156,212);
+    }
+    #learnmorepybtn {
+        background-color: rgb(252,220,80);
+    }
+    #python .course-image {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        left: 25%;
+    }
+    #csharp .course-image {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        left: 30%;
+    }
+    #cpp .course-image {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        left: 30%;
+    }
+    #learnmorepy {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+        opacity: 0;
+        border-radius: 10px;
+        border: 1px solid black;
+        transition: opacity 0.5s ease, box-shadow 0.5s ease;
+        z-index: 2;
+        pointer-events: none;
+        font-family: Metropolisthin;
+        background: linear-gradient(to bottom, rgb(252,220,80), rgb(180, 158, 57));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #learnmorecsharp {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+        opacity: 0;
+        border-radius: 10px;
+        border: 1px solid black;
+        transition: opacity 0.5s ease, box-shadow 0.5s ease;
+        z-index: 2;
+        pointer-events: none;
+        font-family: Metropolisthin;
+        background: linear-gradient(to bottom, rgb(160,116,220), rgb(103, 58, 165));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #learnmorecpp {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+        opacity: 0;
+        border-radius: 10px;
+        border: 1px solid black;
+        transition: opacity 0.5s ease, box-shadow 0.5s ease;
+        z-index: 2;
+        pointer-events: none;
+        font-family: Metropolisthin;
+        background: linear-gradient(to bottom, rgb(104,156,212), rgb(8,68,132));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #learnmorecsharp p,
+    #learnmorecsharp button {
+        text-align: center;
+        margin: 10px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    #learnmorepy p,
+    #learnmorepy button {
+        text-align: center;
+        margin: 10px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    #learnmorecsharp button {
+        background-color: rgb(112,68,172);
+    }
+    #learnmorecpp button {
+        background-color: rgb(104,156,212);
+    }
+    #learnmorecpp p,
+    #learnmorecpp button {
+        text-align: center;
+        margin: 10px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .buybtn {
+        border: black 2px solid;
+        border-radius: 10px;
+        transition: background-color 0.5 ease;
+    }
+    @media (max-width: 1920px) {
+        .course {
+            width: calc(20% - 20px);
+        }
+        .learnmorep {
+            font-size: 60px;
+        }
+        .buybtn {
+            font-size: 60px;
+        }
+    }
+    @media (max-width: 1700px) {
+        .learnmorep {
+            font-size: 50px;
+        }
+        .buybtn {
+            font-size: 50px;
+        }
+    }
+    @media (max-width: 1350px) {
+        .learnmorep {
+            font-size: 45px;
+        }
+        .buybtn {
+            font-size: 45px;
+        }
+    }
+    @media (max-width: 1024px) {
+        .course {
+            width: calc(33% - 20px);   
+        }
+    }
+    @media (max-width:1000px) {
+        .learnmorep {
+            font-size: 40px;
+        }
+        .buybtn {
+            font-size: 40px;
+        }
+    }
+    @media (max-width: 768px) {
+        .course {
+            width: calc(50% - 20px);
+        }
+    }
+    @media (max-width: 709px) {
+        .learnmorep {
+            font-size: 35px;
+        }
+        .buybtn {
+            font-size: 35px;
+        }
+    }
+    @media (max-width: 583px) {
+        .learnmorep {
+            font-size: 30px;
+        }
+        .buybtn {
+            font-size: 30px;
+        }
+    }
+    @media (max-width: 550px) {
+        .course {
+            width: calc(100% - 20px);
+        }
+    }
+    @media (max-width:477px) {
+        .learnmorep {
+            font-size: 25px;
+        }
+        .buybtn {
+            font-size: 25px;
+        }
+    }
+    .course-description h1 {
+        text-align: center;
+        font-family: Metropolisthin;
+    }
+    .course-description h2 {
+        text-align: center;
+        font-family: Metropolisthin;
+    }
+    .course-description p {
+        font-size: 20px;
+    }
+    .course {
+        height: 400px;
+        width: 400px;
+        border: 2px black solid;
+        border-radius: 5px;
+        border-style: solid;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        transition: background-color 0.5s ease, opacity 0.5s ease;
+    }
+    .learnmorebtn {
+        opacity: 0;
+        pointer-events: none;
+        position: relative;
+        height: 0px;
+        width: 0px;
+        border: black 1px solid;
+        border-radius: 10px;
+        color: rgba(0, 255, 0, 0);
+        transition: opacity 0.5s ease, height 0.5s ease, width 0.5s ease, color 1s ease, font-size 0.5s ease, border-radius 0.5s ease;
+    }
+    #learnmorecsbtn {
+        background-color: rgb(160,116,220);
+    }
+    .coursehovercs:hover {
+        .course-image {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .course-description {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .learnmorebtn {
+            font-family: Metropolisbold;
+            opacity: 100;
+            pointer-events: all;
+            height: 60px;
+            font-size: 20px;
+            width: 150px;
+            color: rgb(56, 47, 61);
+            border: black 2px solid;
+        }
+        background-color: rgb(168,124,220);
+    }
+    .coursehoverpy:hover {
+        .course-image {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .course-description {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .learnmorebtn {
+            font-family: Metropolisbold;
+            opacity: 100;
+            pointer-events: all;
+            height: 60px;
+            font-size: 20px;
+            width: 150px;
+            color: rgb(168, 145, 40);
+            border: black 2px solid;
+        }
+        background-color: rgb(252,220,80);
+    }
+    .coursehovercpp:hover {
+        .course-image {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .course-description {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .learnmorebtn {
+            font-family: Metropolisbold;
+            opacity: 100;
+            pointer-events: all;
+            height: 60px;
+            font-size: 20px;
+            width: 150px;
+            color: rgba(0,88,157,255);
+            border: black 2px solid;
+        }
+        background-color: rgba(101,155,211,255);
+    }
+    .course-image {
+        display: flex;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        transition: opacity 0.3s ease; 
+    }
+    /*
+    .course-image img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
+    }
+    */
+    .course-image {
+        display: flex;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        overflow: hidden;
+    }
+    .course-description {
+        left: 0;
+        top: 0;
+        position: relative;
+        width: 100%;
+        height: 50%;
+        transition: opacity 0.5s ease; 
+    }
+    @font-face {
+        font-family: "Metropolisthin";
+        src: url("/Metropolis-Thin.otf");
+    }
+    @font-face {
+        font-family: "Metropolisbold";
+        src: url("/Metropolis-Bold.otf");
+    }
+    #courses {
+        max-width: 1920px;
+        overflow-y: auto;
+        position: absolute;
+        top: 61px;
+        width: 100%;
+        height: calc(100vh - 60px);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+        transition: color 0.5s ease;
+    }
+    body {
+        margin: 0;
+        transition: background-color 1s ease;
+    }
+    .button-container {
+        text-align: center;
+    }
+
+    .button-container button {
+        margin: 5px;
+        padding: 0px 0px;
+        background-color: transparent;
+        border: 0px;
+        color: white;
+    }
+    #blackBar {
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: black;
+    }
+    #aboutbtn {
+        height: 50px;
+        width: 50px;
+        background-color: transparent;
+        border: 0px;
+        margin: 20px;
+        color: white;
+        font-family: Metropolisthin;
+        font-size: 20px;
+    }
+    #statementsbtn {
+        height: 50px;
+        width: 50px;
+        background-color: transparent;
+        border: 0px;
+        margin: 80px;
+        color: white;
+        font-family: Metropolisthin;
+        font-size: 20px;
+    }
+    #welcomep {
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-60%);
+        color: white;
+        white-space: nowrap;
+        font-family: Metropolisthin;
+        font-size: 20px;
+    }
+</style>

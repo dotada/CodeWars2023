@@ -1,6 +1,13 @@
 const path = require('path')
 
-export default {
+export default{
+  build: {
+    rollupOptions: {
+      input: {
+        app: 'public/index.html'
+      }
+    }
+  },
   root: path.resolve(__dirname, 'src'),
   resolve: {
     alias: {
